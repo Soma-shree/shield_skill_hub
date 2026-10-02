@@ -1,0 +1,370 @@
+/* SkillHubFlowchart.css - Chapter 03 Roulette-Style Concentric Career Wheel
+   Rigorous geometric layout, 3 concentric zones, non-overlapping radial labels,
+   flapper needle at 3 o'clock, stacked editorial cards, and responsive fallbacks.
+*/
+
+:root {
+  --wheel-nav-height: 88px;
+  --wheel-pad-v: 48px;
+  --wheel-visible-h: calc(100vh - var(--wheel-nav-height) - var(--wheel-pad-v));
+  --wheel-outer-r: min(clamp(256px, 40vh, 440px), calc((var(--wheel-visible-h) - 64px) / 2));
+  --wheel-diameter: calc(2 * var(--wheel-outer-r));
+  --wheel-block-min-h: max(calc(var(--wheel-diameter) + 96px), calc(100vh - var(--wheel-nav-height)));
+  --wheel-hub-r: calc(var(--wheel-outer-r) * 120 / 463);
+  --wheel-center-x: calc(var(--wheel-hub-r) + 32px);
+  --wheel-col-w: calc(var(--wheel-center-x) + var(--wheel-outer-r) + 36px);
+}
+
+.skillhub-wheel-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 0 60px;
+  background-color: #f4efe6;
+  background-image: 
+    radial-gradient(circle at 20% 35%, #faf7f2 0%, #f4efe6 55%, #eae2d3 100%);
+  color: #172525;
+  font-family: "Manrope", sans-serif;
+  overflow-x: clip;
+  overflow-y: visible;
+  border-top: 2px solid #172525;
+  border-bottom: 2px solid #172525;
+  scroll-margin-top: var(--wheel-nav-height);
+}
+
+/* Halftone and paper grain overlay */
+.skillhub-wheel-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(rgba(23, 37, 37, 0.05) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(140, 101, 46, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px, 40px 40px;
+  mask-image: radial-gradient(ellipse at center, black 75%, transparent 100%);
+}
+
+/* Section Header (Sits completely above the wheel block) */
+.skillhub-wheel-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 36px;
+  position: relative;
+  z-index: 10;
+  padding: 0 20px;
+}
+
+.skillhub-wheel-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  color: #172525;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.skillhub-wheel-title span {
+  color: #8c652e;
+}
+
+.skillhub-wheel-desc {
+  font-size: 15px;
+  font-weight: 500;
+  color: #536363;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Find My Path Banner */
+.skillhub-wheel-path-banner {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 20px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 2px solid #172525;
+  box-shadow: 4px 4px 0 #172525;
+}
+
+@media (min-width: 640px) {
+  .skillhub-wheel-path-banner {
+    flex-direction: row;
+  }
+}
+
+/* Wheel Block: Min-height diameter + 96px, scroll-margin-top equal to navbar */
+.skillhub-wheel-block {
+  position: relative;
+  width: 100%;
+  min-height: var(--wheel-block-min-h);
+  scroll-margin-top: var(--wheel-nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+/* Two-Column Stage Grid (Desktop >= 1024px) */
+.skillhub-wheel-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(auto, var(--wheel-col-w)) minmax(420px, 1fr);
+  gap: 32px;
+  align-items: center;
+  min-height: var(--wheel-diameter);
+  padding: 0 24px 0 0;
+}
+
+/* Wheel Column on the Left */
+.skillhub-wheel-column {
+  position: relative;
+  width: var(--wheel-col-w);
+  height: var(--wheel-diameter);
+  overflow: visible;
+  user-select: none;
+}
+
+/* SVG Wheel Container:
+   Vertical center sits at the middle of the visible area below navbar.
+   Center is located at X = var(--wheel-center-x), top: 50%.
+*/
+.skillhub-wheel-svg-stage {
+  position: absolute;
+  left: var(--wheel-center-x);
+  top: 50%;
+  width: var(--wheel-diameter);
+  height: var(--wheel-diameter);
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.skillhub-wheel-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Wheel Interactive Ring Groups */
+.skillhub-ring-group {
+  touch-action: none;
+  cursor: grab;
+}
+
+.skillhub-ring-group:active {
+  cursor: grabbing;
+}
+
+.skillhub-ring-segment {
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.skillhub-ring-segment:hover {
+  filter: brightness(1.05);
+}
+
+.skillhub-ring-segment:focus-visible {
+  outline: 3px solid #f5b82e;
+  outline-offset: 2px;
+}
+
+/* Right-Hand Content Deck (Cards Column) */
+.skillhub-wheel-right-deck {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 580px;
+  padding: 10px 0;
+}
+
+/* Detail Card Base Styling */
+.skillhub-detail-card {
+  background: #fbf8f3;
+  color: #172525;
+  border: 2.5px solid #172525;
+  box-shadow: 6px 6px 0 #172525;
+  border-radius: 20px;
+  padding: 22px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+
+.skillhub-detail-card.is-navigating {
+  transform: scale(1.025);
+  box-shadow: 10px 10px 0 #172525;
+}
+
+.skillhub-detail-card-dark {
+  background: #183f3f;
+  color: #ffffff;
+  border: 2.5px solid #172525;
+  box-shadow: 6px 6px 0 #172525;
+}
+
+/* Compact scaling for smaller desktop viewport heights (768p and 720p) */
+@media (max-height: 850px) {
+  .skillhub-wheel-right-deck {
+    gap: 8px;
+    padding: 0;
+  }
+  .skillhub-detail-card {
+    padding: 14px 18px;
+  }
+  .skillhub-detail-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .skillhub-detail-card p {
+    font-size: 11px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .skillhub-detail-card .mb-5 {
+    margin-bottom: 8px;
+  }
+  .skillhub-detail-card .comic-btn-gold {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  .skillhub-connector-pill {
+    padding: 3px 12px;
+    font-size: 10px;
+  }
+}
+
+/* Dynamic Gold Connector Bar between Cards */
+.skillhub-card-connector-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.skillhub-connector-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.skillhub-connector-pill.is-active {
+  background: #f5b82e;
+  color: #172525;
+  border: 2px solid #172525;
+  box-shadow: 3px 3px 0 #172525, 0 0 16px rgba(245, 184, 46, 0.6);
+  animation: pulse-gold-glow 2s infinite ease-in-out;
+}
+
+.skillhub-connector-pill.is-dimmed {
+  background: #e6dfd3;
+  color: #7b756c;
+  border: 1.5px dashed #b5ab9a;
+}
+
+@keyframes pulse-gold-glow {
+  0%, 100% { box-shadow: 3px 3px 0 #172525, 0 0 12px rgba(245, 184, 46, 0.4); }
+  50% { box-shadow: 3px 3px 0 #172525, 0 0 24px rgba(245, 184, 46, 0.85); }
+}
+
+/* Quick Control Toolbar (Accessibility & Keyboard Buttons) */
+.skillhub-wheel-controls-toolbar {
+  position: absolute;
+  bottom: 0px;
+  left: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  z-index: 20;
+}
+
+.skillhub-ring-control-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid #172525;
+  box-shadow: 3px 3px 0 #172525;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.skillhub-control-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #f4efe6;
+  border: 1.5px solid #172525;
+  color: #172525;
+  font-weight: 900;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.skillhub-control-btn:hover {
+  background: #f5b82e;
+  transform: translateY(-1px);
+}
+
+.skillhub-control-btn:active {
+  transform: translateY(1px);
+}
+
+/* Mobile & Tablet Fallbacks (< 1024px) */
+.skillhub-mobile-journey {
+  display: block;
+  padding: 0 16px;
+}
+
+@media (min-width: 1024px) {
+  .skillhub-mobile-journey {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .skillhub-wheel-stage {
+    display: none;
+  }
+}
+
+/* Reduced Motion Mode */
+@media (prefers-reduced-motion: reduce) {
+  .skillhub-ring-group {
+    transition: none !important;
+  }
+  .skillhub-connector-pill.is-active {
+    animation: none !important;
+  }
+  .skillhub-detail-card {
+    transition: none !important;
+  }
+}

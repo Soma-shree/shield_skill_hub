@@ -1,0 +1,136 @@
+import { ResourceItem } from "../types"
+
+export const resourcesData: ResourceItem[] = [
+  {
+    id: "res-dsa-roadmap",
+    title: "Complete Data Structures & Algorithms Roadmap 2025",
+    category: "DSA",
+    type: "Roadmap",
+    description:
+      "A step-by-step master plan covering arrays, linked lists, trees, graphs, dynamic programming, and competitive interview patterns.",
+    readTime: "15 min read",
+    level: "All levels",
+    downloadable: true,
+    link: "#dsa-roadmap",
+  },
+  {
+    id: "res-dsa-75",
+    title: "Shield Blind 75 LeetCode Problem Breakdown",
+    category: "DSA",
+    type: "Practice Problems",
+    description:
+      "The top 75 essential algorithmic interview questions categorized by Two-Pointers, Sliding Window, Backtracking, and Binary Search.",
+    readTime: "75 Problems",
+    level: "Intermediate",
+    downloadable: true,
+    link: "#blind-75",
+  },
+  {
+    id: "res-python-cheat-sheet",
+    title: "Python 3 Syntax & Data Science Cheat Sheet",
+    category: "Python",
+    type: "Cheat Sheet",
+    description:
+      "Quick syntax reference for list comprehensions, lambda functions, decorators, generators, and Pandas one-liners.",
+    readTime: "Quick Reference",
+    level: "Beginner",
+    downloadable: true,
+    link: "#python-cheat-sheet",
+  },
+  {
+    id: "res-python-oop",
+    title: "Clean Code & Object-Oriented Design in Python",
+    category: "Python",
+    type: "Article",
+    description:
+      "How to structure production Python services using SOLID principles, abstract base classes, and type hints.",
+    readTime: "12 min read",
+    level: "Intermediate",
+    downloadable: false,
+    link: "#clean-python",
+  },
+  {
+    id: "res-ml-pipeline-guide",
+    title: "Building Production Machine Learning Pipelines",
+    category: "Machine Learning",
+    type: "Tutorial",
+    description:
+      "From data cleaning and feature engineering to model serialization and containerized deployment with Docker.",
+    readTime: "25 min tutorial",
+    level: "Intermediate",
+    downloadable: false,
+    link: "#ml-pipeline-tutorial",
+  },
+  {
+    id: "res-transformers-explained",
+    title: "Transformers & Attention Mechanisms Demystified",
+    category: "Machine Learning",
+    type: "Article",
+    description:
+      "An intuitive mathematical breakdown of self-attention, query-key-value vectors, and multi-head scaling.",
+    readTime: "18 min read",
+    level: "Advanced",
+    downloadable: false,
+    link: "#transformers-explained",
+  },
+  {
+    id: "res-pandas-mastery",
+    title: "Pandas Performance Optimization & Memory Management",
+    category: "Data Science",
+    type: "Cheat Sheet",
+    description:
+      "Techniques for processing 10M+ row dataframes in memory using categorical types, chunking, and pyarrow backends.",
+    readTime: "Quick Guide",
+    level: "Intermediate",
+    downloadable: true,
+    link: "#pandas-optimization",
+  },
+  {
+    id: "res-statistics-handbook",
+    title: "Applied Probability & A/B Testing Handbook",
+    category: "Data Science",
+    type: "Tutorial",
+    description:
+      "Everything a data professional needs to know about hypothesis testing, p-values, power analysis, and experiment design.",
+    readTime: "30 min tutorial",
+    level: "Intermediate",
+    downloadable: true,
+    link: "#ab-testing-handbook",
+  },
+  {
+    id: "res-react-19-guide",
+    title: "React 19 & Modern Full-Stack Architecture",
+    category: "Web Development",
+    type: "Article",
+    description:
+      "Explore React Server Components, Actions, optimistic state mutations, and Tailwind CSS v4 design systems.",
+    readTime: "14 min read",
+    level: "Intermediate",
+    downloadable: false,
+    link: "#react-19-guide",
+  },
+  {
+    id: "res-system-design-primer",
+    title: "Full-Stack System Design Primer for Tech Interviews",
+    category: "Interview Preparation",
+    type: "Roadmap",
+    description:
+      "Master load balancing, caching (Redis), CDN edge networks, database sharding, and microservices trade-offs.",
+    readTime: "35 min read",
+    level: "Advanced",
+    downloadable: true,
+    link: "#system-design-primer",
+  },
+  {
+    id: "res-behavioral-interview",
+    title: "The STAR Method Guide for Tech & Consulting Interviews",
+    category: "Interview Preparation",
+    type: "Cheat Sheet",
+    description:
+      "Frameworks and 20+ sample responses for conflict resolution, leadership, failure recovery, and cross-functional questions.",
+    readTime: "10 min read",
+    level: "All levels",
+    downloadable: true,
+    link: "#star-method",
+  },
+]

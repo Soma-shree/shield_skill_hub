@@ -1,0 +1,10 @@
+{
+  "description": "Offers modern, career-focused skill development with industry-relevant courses, hands-on projects, and career support for students and professionals.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

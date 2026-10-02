@@ -1,0 +1,286 @@
+/* comicEditorial.css - Vintage Comic + Mid-Century Editorial Storytelling Design System
+   Combines 1960s editorial poster typography, tech magazine layouts, halftone dot grids,
+   bold panel borders with hard drop shadows, and speech bubbles, while strictly preserving
+   Shield Skill Hub brand colors (#0d4545, #183f3f, #115b5b, #f5b82e, #172525, #ffffff).
+*/
+
+:root {
+  --comic-navy: #0d4545;
+  --comic-navy-2: #183f3f;
+  --comic-teal: #115b5b;
+  --comic-gold: #f5b82e;
+  --comic-gold-dark: #8c652e;
+  --comic-ink: #172525;
+  --comic-paper: #f4efe6;
+  --comic-card: #fbf8f3;
+  --comic-line: #dbe7e4;
+  --comic-red-accent: #c2410c;
+}
+
+/* Halftone Screen Background Patterns */
+.comic-halftone-teal {
+  background-image: radial-gradient(rgba(17, 91, 91, 0.18) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+}
+
+.comic-halftone-gold {
+  background-image: radial-gradient(rgba(245, 184, 46, 0.22) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+}
+
+.comic-halftone-dots {
+  background-image: radial-gradient(rgba(23, 37, 37, 0.08) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* Paper Grain Texture */
+.comic-paper-texture {
+  background-color: var(--comic-paper);
+  background-image: 
+    radial-gradient(rgba(140, 115, 80, 0.05) 1px, transparent 1px),
+    linear-gradient(to right, rgba(201, 169, 120, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px, 40px 40px;
+}
+
+/* Editorial Chapter Badges */
+.comic-chapter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--comic-ink);
+  color: var(--comic-gold);
+  border: 1.5px solid var(--comic-gold);
+  box-shadow: 3px 3px 0 rgba(23, 37, 37, 0.85);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.comic-chapter-badge span.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--comic-gold);
+}
+
+/* Editorial Panel Card (Vintage Poster Framing) */
+.comic-panel-card {
+  background: var(--comic-card);
+  color: var(--comic-ink);
+  border: 2px solid var(--comic-ink);
+  box-shadow: 5px 5px 0 var(--comic-ink);
+  border-radius: 18px;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.comic-panel-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--comic-ink);
+}
+
+/* Editorial Panel Dark Mode (Teal background) */
+.comic-panel-teal {
+  background: var(--comic-navy-2);
+  color: #ffffff;
+  border: 2px solid var(--comic-line);
+  box-shadow: 5px 5px 0 var(--comic-gold);
+  border-radius: 18px;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+}
+
+.comic-panel-teal:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 var(--comic-gold);
+}
+
+/* Speech Bubble Callout */
+.comic-speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border: 2px solid var(--comic-ink);
+  box-shadow: 4px 4px 0 var(--comic-ink);
+  border-radius: 14px;
+  padding: 12px 18px;
+  color: var(--comic-ink);
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.comic-speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 24px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid #ffffff;
+}
+
+.comic-speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  left: 22px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 12px solid var(--comic-ink);
+}
+
+/* Bold Vintage Buttons */
+.comic-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: var(--comic-gold);
+  color: var(--comic-ink);
+  border: 2px solid var(--comic-ink);
+  box-shadow: 4px 4px 0 var(--comic-ink);
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.comic-btn-gold:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--comic-ink);
+  background: #f8c650;
+}
+
+.comic-btn-gold:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--comic-ink);
+}
+
+.comic-btn-teal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 26px;
+  background: var(--comic-navy);
+  color: #ffffff;
+  border: 2px solid var(--comic-gold);
+  box-shadow: 4px 4px 0 var(--comic-gold);
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.18s ease;
+}
+
+.comic-btn-teal:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--comic-gold);
+  background: var(--comic-navy-2);
+}
+
+.comic-btn-teal:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--comic-gold);
+}
+
+/* Comic Level Progression Bar (Level 01 -> Level 05) */
+.comic-progression-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--comic-paper);
+  border: 2px solid var(--comic-ink);
+  box-shadow: 4px 4px 0 var(--comic-ink);
+  border-radius: 16px;
+  margin-bottom: 28px;
+}
+
+.comic-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--comic-ink);
+  background: #ffffff;
+  color: var(--comic-ink);
+}
+
+.comic-level-badge.is-active {
+  background: var(--comic-gold);
+  box-shadow: 2px 2px 0 var(--comic-ink);
+}
+
+.comic-level-arrow {
+  color: var(--comic-gold-dark);
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* Halftone Accent Wipe Effect on Sections */
+.comic-section-divider {
+  width: 100%;
+  height: 24px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--comic-gold),
+    var(--comic-gold) 12px,
+    var(--comic-ink) 12px,
+    var(--comic-ink) 24px
+  );
+  border-top: 2px solid var(--comic-ink);
+  border-bottom: 2px solid var(--comic-ink);
+}
+
+/* Vintage Comic Caption Box ("MEANWHILE...", "THE DILEMMA...") */
+.comic-caption-box {
+  display: inline-block;
+  background: var(--comic-gold);
+  color: var(--comic-ink);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border: 2px solid var(--comic-ink);
+  box-shadow: 2px 2px 0 var(--comic-ink);
+  transform: rotate(-1.5deg);
+}
+
+/* Comic Sound Effect / Emphasis Badge */
+.comic-burst-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fbf8f3;
+  color: var(--comic-red-accent);
+  border: 1.5px solid var(--comic-red-accent);
+  box-shadow: 2px 2px 0 var(--comic-red-accent);
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 6px;
+}
